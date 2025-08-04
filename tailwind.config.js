@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{vue,js,ts,jsx,tsx}", // This line scans all your Vue and JS/TS files
   ],
+  darkMode: 'class', // Enable class-based dark mode
   theme: {
     extend: {},
   },

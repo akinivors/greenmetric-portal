@@ -20,6 +20,11 @@ export interface TransportationStats {
   initiativesToDecreasePrivateVehicles: number | null;
 }
 
+export interface WaterStats {
+  waterConservationPercentage: number | null;
+  waterEfficientAppliancePercentage: number | null;
+}
+
 export interface EducationAndResearchStats {
   sustainabilityCoursesRatio: number | null;
   sustainabilityResearchFundingRatio: number | null;
@@ -38,7 +43,6 @@ export interface GreenMetricData {
   settingAndInfrastructure: SettingAndInfrastructureStats;
   energyAndClimateChange: EnergyAndClimateChangeStats;
   transportation: TransportationStats;
+  water: WaterStats;
   educationAndResearch: EducationAndResearchStats;
-  // Note: Waste and Water are handled by a different API endpoint in the demo backend,
-  // but for our new portal, let's assume they will be added here later.
 }
