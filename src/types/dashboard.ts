@@ -23,6 +23,8 @@ export interface DashboardData {
 export interface EnrichmentItem {
   title: string;
   description: string;
+  icon: string;
+  details: string;
 }
 
 export interface EnrichmentData {

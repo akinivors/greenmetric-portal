@@ -7,6 +7,10 @@ export interface SettingAndInfrastructureStats {
   waterAbsorptionToTotalAreaRatio: number | null;
   campusPopulation: number | null;
   sustainabilityBudgetPercentage: number | null;
+  institutionType: string | null;
+  climateZone: string | null;
+  campusSetting: string | null;
+  numOfCampusSites: number | null;
 }
 
 export interface EnergyAndClimateChangeStats {
