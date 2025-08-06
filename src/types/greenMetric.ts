@@ -17,6 +17,7 @@ export interface EnergyAndClimateChangeStats {
   energyEfficientAppliancesUsage: number | null;
   renewableEnergyProductionRatio: number | null;
   carbonFootprintPerPerson: number | null;
+  smartBuildingRatio: number | null;
 }
 
 export interface TransportationStats {
