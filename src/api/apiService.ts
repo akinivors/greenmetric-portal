@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8080/api/public';
+import { API_BASE_URL } from '../config/environment';
 
 // Add types for the dynamic data
 interface GraphDataPoint {
