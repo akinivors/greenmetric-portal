@@ -9,7 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/motion": "^3.0.3",
     "apexcharts": "^5.3.2",
+    "gsap": "^3.13.0",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1",
     "vue3-apexcharts": "^1.8.0"
