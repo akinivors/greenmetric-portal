@@ -102,6 +102,22 @@ export default {
           '40%': { transform: 'translateX(0) scaleX(1)', transformOrigin: 'left' },
           '60%': { transform: 'translateX(0) scaleX(1)', transformOrigin: 'right' },
           '100%': { transform: 'translateX(100%) scaleX(0)', transformOrigin: 'right' },
+        },
+        'subtle-pan': {
+          '0%, 100%': { transform: 'scale(1.05) translateX(-1%)' },
+          '50%': { transform: 'scale(1.05) translateX(1%)' },
+        },
+        'hotspot-pulse': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.7' },
+          '50%': { transform: 'scale(1.2)', opacity: '1' },
+        },
+        'soft-glow': {
+          '0%, 100%': { filter: 'brightness(1) contrast(1)' },
+          '50%': { filter: 'brightness(1.1) contrast(1.1) saturate(1.2)' },
+        },
+        'starfield-pan': {
+          '0%': { backgroundPosition: '0% 0%' },
+          '100%': { backgroundPosition: '100% 100%' },
         }
       },
       animation: {
@@ -113,6 +129,10 @@ export default {
         'rain': 'rain 2s infinite linear',
         'motion-lines': 'motion-lines 3s infinite ease-in-out',
         'swoosh': 'swoosh 4s infinite ease-in-out',
+        'subtle-pan': 'subtle-pan 15s infinite ease-in-out alternate',
+        'hotspot-pulse': 'hotspot-pulse 2s infinite ease-in-out',
+        'soft-glow': 'soft-glow 6s infinite ease-in-out',
+        'starfield-pan': 'starfield-pan 120s infinite linear',
       }
     },
   },

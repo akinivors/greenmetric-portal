@@ -34,6 +34,16 @@ const routes = [
         name: 'TransportationPage',
         component: () => import('../views/TransportationPage.vue'),
       },
+      {
+        path: 'infrastructure', // corresponds to /story/infrastructure
+        name: 'InfrastructurePage',
+        component: () => import('../views/InfrastructurePage.vue'),
+      },
+      {
+        path: 'education', // corresponds to /story/education
+        name: 'EducationPage',
+        component: () => import('../views/EducationPage.vue'),
+      },
       // We will add future pages (Energy, Waste, etc.) here
     ]
   },

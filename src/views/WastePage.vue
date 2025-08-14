@@ -50,14 +50,35 @@
     <div class="bg-slate-50 dark:bg-gray-900/50 p-8 rounded-2xl">
         <EnrichmentSection title="Our Approach to Waste Reduction" :items="wasteInitiatives" @item-click="handleInitiativeClick" />
     </div>
-    <div class="text-center p-8 bg-green-50 dark:bg-green-900/20 rounded-2xl">
-      <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Want to see the full picture?</h3>
-      <p class="mt-2 text-gray-600 dark:text-gray-400">Explore the detailed charts and raw data in our Waste Data Hub.</p>
-      <router-link to="/dashboard/waste" class="mt-6 inline-flex items-center gap-x-2 bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition-transform hover:scale-105">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" /><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" /></svg>
-        Go to Data Hub
-      </router-link>
-    </div>
+    <section id="data-hub" class="relative p-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
+      <!-- Background pattern -->
+      <div class="absolute inset-0 opacity-5">
+        <svg class="w-full h-full" viewBox="0 0 100 100" fill="currentColor">
+          <defs>
+            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+              <circle cx="5" cy="5" r="1" />
+            </pattern>
+          </defs>
+          <rect width="100" height="100" fill="url(#grid)" />
+        </svg>
+      </div>
+      
+      <div class="relative text-center max-w-4xl mx-auto">
+        <h3 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Explore the Complete Data Journey</h3>
+        <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+          Dive deeper into our comprehensive waste management metrics and discover the full scope of our reduction efforts.
+        </p>
+        <router-link 
+          to="/dashboard/waste" 
+          class="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+        >
+          <span class="text-lg">Go to Data Hub</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </router-link>
+      </div>
+    </section>
     <Modal :show="isModalVisible" :title="modalContent.title" :content="modalContent.content" @close="isModalVisible = false" />
   </div>
 </template>
