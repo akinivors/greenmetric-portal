@@ -1,5 +1,6 @@
+// src/router/index.ts
 import { createRouter, createWebHistory } from 'vue-router';
-import StoryPageLayout from '../layouts/StoryPageLayout.vue'; // Import the new layout
+import StoryPageLayout from '../layouts/StoryPageLayout.vue';
 
 const routes = [
   {
@@ -8,47 +9,19 @@ const routes = [
     component: () => import('../views/HomePage.vue'),
   },
   {
-    // New Storytelling Page for Waste
-    path: '/waste',
-    name: 'WastePage',
-    component: () => import('../views/WastePage.vue'),
-  },
-  {
-    // New Storytelling Page for Energy & Climate Change
-    path: '/energy',
-    name: 'EnergyPage',
-    component: () => import('../views/EnergyPage.vue'),
-  },
-  {
-    // Parent Route for all storytelling pages
+    // Parent Route for ALL storytelling pages
     path: '/story',
     component: StoryPageLayout,
     children: [
-      {
-        path: 'water', // corresponds to /story/water
-        name: 'WaterPage',
-        component: () => import('../views/WaterPage.vue'),
-      },
-      {
-        path: 'transportation', // corresponds to /story/transportation
-        name: 'TransportationPage',
-        component: () => import('../views/TransportationPage.vue'),
-      },
-      {
-        path: 'infrastructure', // corresponds to /story/infrastructure
-        name: 'InfrastructurePage',
-        component: () => import('../views/InfrastructurePage.vue'),
-      },
-      {
-        path: 'education', // corresponds to /story/education
-        name: 'EducationPage',
-        component: () => import('../views/EducationPage.vue'),
-      },
-      // We will add future pages (Energy, Waste, etc.) here
+      { path: 'waste', name: 'WastePage', component: () => import('../views/WastePage.vue') },
+      { path: 'energy', name: 'EnergyPage', component: () => import('../views/EnergyPage.vue') },
+      { path: 'water', name: 'WaterPage', component: () => import('../views/WaterPage.vue') },
+      { path: 'transportation', name: 'TransportationPage', component: () => import('../views/TransportationPage.vue') },
+      { path: 'infrastructure', name: 'InfrastructurePage', component: () => import('../views/InfrastructurePage.vue') },
+      { path: 'education', name: 'EducationPage', component: () => import('../views/EducationPage.vue') },
     ]
   },
   {
-    // Existing Data Hub Route
     path: '/dashboard/:categoryName',
     name: 'CategoryDashboard',
     component: () => import('../views/CategoryDashboard.vue'),

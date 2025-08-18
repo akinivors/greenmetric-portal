@@ -70,7 +70,7 @@
         <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Measuring Our Consumption</h2>
         <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">Understanding our usage is the first step toward conservation.</p>
         <div class="mt-8 flex justify-center items-center gap-x-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-blue-400 dark:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c1.354 0 2.653-.255 3.84-.717M12 21c-1.354 0-2.653-.255-3.84-.717M12 3c1.354 0 2.653-.255 3.84-.717M12 3c-1.354 0-2.653-.255-3.84-.717m6.113 13.56c-2.48.513-5.26.513-7.74 0M1.5 9.75h1.5a.75.75 0 01.75.75v3a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75v-3a.75.75 0 01.75-.75zm21 0h-1.5a.75.75 0 00-.75.75v3a.75.75 0 00.75.75h1.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" :class="themeClasses.primary" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c1.354 0 2.653-.255 3.84-.717M12 21c-1.354 0-2.653-.255-3.84-.717M12 3c1.354 0 2.653-.255 3.84-.717M12 3c-1.354 0-2.653-.255-3.84-.717m6.113 13.56c-2.48.513-5.26.513-7.74 0M1.5 9.75h1.5a.75.75 0 01.75.75v3a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75v-3a.75.75 0 01.75-.75zm21 0h-1.5a.75.75 0 00-.75.75v3a.75.75 0 00.75.75h1.5a.75.75 0 00.75-.75v-3a.75.75 0 00-.75-.75z" /></svg>
             <div>
                 <span ref="consumptionNumber" class="text-6xl font-extrabold text-gray-800 dark:text-gray-100">0</span>
                 <span class="text-2xl font-medium text-gray-500 dark:text-gray-400">Tons/Month</span>
@@ -205,7 +205,7 @@
           </div>
         </div>
         <div class="space-y-6">
-          <h3 class="text-3xl font-bold text-blue-600 dark:text-blue-400">Efficient Technology</h3>
+          <h3 :class="themeClasses.primary" class="text-3xl font-bold">Efficient Technology</h3>
           <FeaturePane 
             icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 3.75H6A2.25 2.25 0 003.75 6v1.5M16.5 3.75H18A2.25 2.25 0 0120.25 6v1.5m0 9V18A2.25 2.25 0 0118 20.25h-1.5m-9 0H6A2.25 2.25 0 013.75 18v-1.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>'
             title="Low-Flow Fixtures" 
@@ -359,7 +359,7 @@
           </div>
         </div>
         <div class="md:order-1 space-y-6">
-            <h3 class="text-3xl font-bold text-blue-600 dark:text-blue-400">Smart Conservation</h3>
+            <h3 :class="themeClasses.primary" class="text-3xl font-bold">Smart Conservation</h3>
             <FeaturePane 
               icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg>'
               title="Smart Irrigation" 
@@ -377,7 +377,8 @@
     <section id="pledge">
       <PledgeSection 
         title="Join Our Mission: Conserve Every Drop" 
-        :pledges="waterPledges" 
+        :pledges="waterPledges"
+        themeColor="blue"
       />
     </section>
 
@@ -401,7 +402,8 @@
         </p>
         <router-link 
           to="/dashboard/water" 
-          class="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+          :class="themeClasses.button"
+          class="inline-flex items-center gap-3 text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
         >
           <span class="text-lg">Go to Data Hub</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -416,12 +418,16 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { gsap } from 'gsap';
+import { useTheme } from '../composables/useTheme';
 import ImpactCard from '../components/ImpactCard.vue';
 import FeaturePane from '../components/FeaturePane.vue';
 import PledgeSection from '../components/PledgeSection.vue';
 import heroImage from '../assets/waterpage.jpg';
 import efficientImage from '../assets/waterefficient.jpg';
 import conservationImage from '../assets/greencampuswater.jpg';
+
+// Initialize theme
+const { themeClasses } = useTheme('blue');
 
 const emit = defineEmits(['update-active-section']);
 const consumptionSection = ref<HTMLElement | null>(null);

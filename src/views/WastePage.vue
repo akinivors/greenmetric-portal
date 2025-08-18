@@ -16,14 +16,14 @@
 
     <div class="py-12 px-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700">
       <div class="max-w-3xl mx-auto text-center">
-        <div @click="triggerTrashAnimation" class="w-16 h-16 mx-auto bg-green-100 dark:bg-gray-700 rounded-full flex items-center justify-center mb-6 cursor-pointer transition-transform hover:scale-110">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-green-600 dark:text-green-400">
+        <div @click="triggerTrashAnimation" :class="[themeClasses.bgLight, themeClasses.hover]" class="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 cursor-pointer transition-transform hover:scale-110">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" :class="themeClasses.primary" class="w-8 h-8">
             <path fill-rule="evenodd" d="M4.755 10.059a7.5 7.5 0 0112.548-3.364l1.903 1.903h-4.5a.75.75 0 000 1.5h6a.75.75 0 00.75-.75v-6a.75.75 0 00-1.5 0v4.5l-1.903-1.903A9 9 0 003.75 10.5a.75.75 0 001.5 0c0-.343.03-.676.09-1.002zM19.245 13.941a7.5 7.5 0 01-12.548 3.364l-1.903-1.903h4.5a.75.75 0 000-1.5h-6a.75.75 0 00-.75.75v6a.75.75 0 001.5 0v-4.5l1.903 1.903A9 9 0 0020.25 13.5a.75.75 0 00-1.5 0c0 .343-.03.676-.09 1.002z" clip-rule="evenodd" />
           </svg>
         </div>
         <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Our Commitment to a Circular Economy</h2>
         <blockquote class="mt-4 relative">
-          <div class="absolute left-0 top-0 h-full w-1 bg-green-200 dark:bg-green-800/50 rounded-full"></div>
+          <div :class="themeClasses.borderLight" class="absolute left-0 top-0 h-full w-1 rounded-full"></div>
           <p class="pl-8 text-lg italic text-gray-600 dark:text-gray-400">"We believe in a future without waste. Our approach goes beyond simple recycling; we are committed to the principles of a circular economy. This means designing systems to prevent waste, reusing materials whenever possible, and returning biological resources to the earth through composting. Every item we divert from a landfill is a step toward a more sustainable and regenerative campus."</p>
         </blockquote>
       </div>
@@ -50,6 +50,15 @@
     <div class="bg-slate-50 dark:bg-gray-900/50 p-8 rounded-2xl">
         <EnrichmentSection title="Our Approach to Waste Reduction" :items="wasteInitiatives" @item-click="handleInitiativeClick" />
     </div>
+
+    <section id="pledge">
+      <PledgeSection 
+        title="Join Our Mission: Reduce, Reuse, Recycle" 
+        :pledges="wastePledges"
+        themeColor="slate"
+      />
+    </section>
+
     <section id="data-hub" class="relative p-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
       <!-- Background pattern -->
       <div class="absolute inset-0 opacity-5">
@@ -70,7 +79,8 @@
         </p>
         <router-link 
           to="/dashboard/waste" 
-          class="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+          :class="themeClasses.button"
+          class="inline-flex items-center gap-3 text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
         >
           <span class="text-lg">Go to Data Hub</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,10 +95,15 @@
 
 <script setup lang="ts">
 import { ref, nextTick } from 'vue';
+import { useTheme } from '../composables/useTheme';
 import ImpactCard from '../components/ImpactCard.vue';
 import EnrichmentSection from '../components/EnrichmentSection.vue';
+import PledgeSection from '../components/PledgeSection.vue';
 import Modal from '../components/Modal.vue';
 import type { EnrichmentItem } from '../types/dashboard';
+
+// Initialize theme
+const { themeClasses } = useTheme('slate');
 
 
 const isModalVisible = ref(false);
@@ -166,6 +181,12 @@ const wasteInitiatives = ref([
     icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>`,
     details: 'All sewage on campus is treated using a tertiary treatment system, ensuring the water is purified to a high standard before being discharged. This advanced treatment process removes over 95% of contaminants and supports our commitment to environmental stewardship.'
   }
+]);
+
+const wastePledges = ref([
+  { id: 1, text: "I'll use reusable containers", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.098 19.902a3.75 3.75 0 005.304 0l6.401-6.402M6.75 21A3.75 3.75 0 013 17.25V4.125C3 3.504 3.504 3 4.125 3h15.75C20.496 3 21 3.504 21 4.125V17.25A3.75 3.75 0 0117.25 21H6.75z" /></svg>`, pledged: false },
+  { id: 2, text: "I'll separate my recycling", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>`, pledged: false },
+  { id: 3, text: "I'll compost organic waste", icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" /></svg>`, pledged: false },
 ]);
 </script>
 

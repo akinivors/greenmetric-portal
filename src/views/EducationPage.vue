@@ -69,7 +69,8 @@
       <section id="pledge">
         <PledgeSection 
           title="Join the Movement: Be a Sustainability Leader" 
-          :pledges="educationPledges" 
+          :pledges="educationPledges"
+          themeColor="indigo"
         />
       </section>
 

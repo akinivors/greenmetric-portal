@@ -6,7 +6,7 @@
     <div class="space-y-20 lg:pl-20">
       <section id="vision" class="relative text-center py-24 px-4 rounded-2xl overflow-hidden shadow-xl bg-gray-800 text-white">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1454779132693-e5cd0a216ed3?q=80&w=2070&auto=format&fit=crop')"></div>
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-blue-900/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 to-amber-900/40"></div>
         <div class="relative z-10">
           <h1 class="text-5xl md:text-6xl font-extrabold text-white" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">Powering a Brighter, Cleaner Future</h1>
           <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-200" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">Discover how we're revolutionizing our energy landscape, from innovative smart buildings to expansive renewable sources, on our path to carbon neutrality.</p>
@@ -17,7 +17,7 @@
         <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Understanding Our Footprint</h2>
         <p class="mt-2 text-lg text-gray-500 dark:text-gray-400">To build a sustainable future, we must first measure our impact.</p>
         <div class="mt-8 flex justify-center items-center gap-x-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" :class="themeClasses.primary" class="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" /></svg>
             <div>
                 <span ref="footprintNumber" class="text-6xl font-extrabold text-gray-800 dark:text-gray-100">0</span>
                 <span class="text-2xl font-medium text-gray-500 dark:text-gray-400">tons CO₂e</span>
@@ -30,7 +30,7 @@
           <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100">Our Progress in Renewable Energy</h2>
           <div class="mt-8 flex justify-center">
               <div class="relative w-48 h-48">
-                  <svg class="w-full h-full" viewBox="0 0 36 36"><path class="stroke-current text-gray-200 dark:text-gray-700" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path><path ref="radialBar" class="stroke-current text-green-500" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3" stroke-linecap="round"></path></svg>
+                  <svg class="w-full h-full" viewBox="0 0 36 36"><path class="stroke-current text-gray-200 dark:text-gray-700" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path><path ref="radialBar" :class="themeClasses.secondary" class="stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3" stroke-linecap="round"></path></svg>
                   <div class="absolute inset-0 flex flex-col items-center justify-center">
                       <span ref="renewableNumber" class="text-4xl font-bold text-gray-800 dark:text-gray-100">0%</span>
                   </div>
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="space-y-6">
-                <h3 class="text-3xl font-bold text-green-600 dark:text-green-400">Harnessing Renewable Energy</h3>
+                <h3 :class="themeClasses.primary" class="text-3xl font-bold">Harnessing Renewable Energy</h3>
                 <FeaturePane 
                   icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>'
                   title="Solar Power"
@@ -97,7 +97,7 @@
                 </div>
             </div>
             <div class="md:order-1 space-y-6">
-                <h3 class="text-3xl font-bold text-green-600 dark:text-green-400">Building a Smarter Campus</h3>
+                <h3 :class="themeClasses.primary" class="text-3xl font-bold">Building a Smarter Campus</h3>
                 <FeaturePane 
                   icon='<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>'
                   title="Smart Systems"
@@ -115,7 +115,8 @@
       <section id="pledge">
         <PledgeSection 
           title="Join Our Mission: Make Your Pledge" 
-          :pledges="energyPledges" 
+          :pledges="energyPledges"
+          themeColor="amber"
         />
       </section>
 
@@ -139,7 +140,8 @@
           </p>
           <router-link 
             to="/dashboard/energy-climate-change" 
-            class="inline-flex items-center gap-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+            :class="themeClasses.button"
+            class="inline-flex items-center gap-3 text-white font-bold py-4 px-8 rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
           >
             <span class="text-lg">Go to Data Hub</span>
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,6 +157,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue';
 import { gsap } from 'gsap';
+import { useTheme } from '../composables/useTheme';
 import ImpactCard from '../components/ImpactCard.vue';
 import JourneyNavigator from '../components/JourneyNavigator.vue';
 import JourneyLine from '../components/JourneyLine.vue';
@@ -162,6 +165,9 @@ import FeaturePane from '../components/FeaturePane.vue';
 import PledgeSection from '../components/PledgeSection.vue';
 import renewableEnergyImage from '../assets/renewableenergy.jpg';
 import smartCampusImage from '../assets/smartcampus.jpeg';
+
+// Initialize theme
+const { themeClasses } = useTheme('amber');
 
 // --- CORRECTED PLEDGE DATA ---
 const energyPledges = ref([
